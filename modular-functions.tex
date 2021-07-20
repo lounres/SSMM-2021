@@ -1,0 +1,65 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{math-text}
+% \usepackage{todonotes}
+% \usepackage{multicol}
+% \usepackage{float}
+
+\title{$\wp$-функция Вейерштрасса, ряды Эйзенштейна и модулярные функции.}
+\author{Виктор Алексеевич Клепцын}
+
+\begin{document}
+    \maketitle
+
+    \begin{definition}
+        \emph{Элиптическая кривая} --- $E_\Gamma := \CC / \Gamma$, где
+        \[\Gamma := \{a z_1 + b z_2 \mid a, b \in \ZZ \wedge z_1/ z_2 \notin \RR\}.\]
+    \end{definition}
+
+    \begin{remark}
+        Это же банально тор.
+    \end{remark}
+
+    \begin{definition}
+        \emph{Элиптическая кривая} --- $\{(x; y) \mid y^2 = P(x)\}$, где $P$ свободен от кратных корней.
+    \end{definition}
+
+    \begin{definition}
+        $f$ называется \emph{голоморфной} в $D \subseteq \CC$, если $f$ комплексно дифференцируемо в точке $D$.
+    \end{definition}
+
+    \begin{lemma}[условие Коши-Римана]
+        Пусть $f$ дифференцируема в точке $z_0 \in D \subseteq \RR^2$ ($= \CC$). Тогда если $f$ комплексно дифференцируема в $z_0$, то $\partial_x f(z_0) = \partial_y f(z_0) = f'(z_0)$.d
+    \end{lemma}
+
+    \begin{lemma}
+        Голоморфная функция на области восстанавливается по значениям на границе.
+    \end{lemma}
+
+    \begin{lemma}
+        Если $f$ голоморфна в $D$, то она бесконечно комплексно дифференцируема и совпадает со своим рядом Тейлора (для всякой внутренней точки в $D$).
+    \end{lemma}
+
+    \begin{lemma}
+        Голоморфная на области функция имеет экстремумы на области на границе этой области.
+    \end{lemma}
+    
+    \begin{remark}
+        Рассмотрим голоморфные функции на элиптической кривой, они же голоморфные функции, периодические по двум неколлинеарным векторам. В таком случае понятно, что она константна.
+    \end{remark}
+
+    Будем рассматривать функции не в $\CC$, а в $\CC \sqcup \{\infty\} = \CC P^1$.
+
+    \begin{definition}
+        \emph{Полюс порядка $n$} у функции $f$ --- точка $z_0$, что $f(z) = \sum_{k=-n}^\infty c_k (z - z_0)^n$ и $c_{-k} \neq 0$, т.е. $1/f = (z - z_0)^n + \dots$. 
+    \end{definition}
+
+    \begin{definition}
+        Функция $f$ \emph{мероморфна}, если для всякой точки верно, что либо в её окрестности $f$ голоморфна, либо она является полюсом.
+    \end{definition}
+
+    \begin{definition}
+        \emph{Элептическая функция} --- мероморфная функция на элиптической кривой.
+    \end{definition}
+
+
+\end{document}
