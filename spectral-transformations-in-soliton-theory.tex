@@ -25,7 +25,7 @@
         \begin{enumerate}
             \item \[\frac{\partial u}{\partial t} + \frac{3}{2} u \frac{\partial u}{\partial x} - \frac{1}{4} \frac{\partial^3 u}{\partial x^3} = 0\]
                 описывает волны на воде.
-            \item Tola: \[\frac{1}{4} \ddot{x}_n = e^{2(x_n - x_{n+1})} - e^{2(x_{n-1} - x_n)}.\]
+            \item \href{https://ru.wikipedia.org/wiki/Цепочка_Тоды}{Ряды Тоды} (Toda): \[\frac{1}{4} \ddot{x}_n = e^{2(x_n - x_{n+1})} - e^{2(x_{n-1} - x_n)}.\]
             \item Система CM: \[\ddot{x}_n = \sum_{m=1}^N \frac{4}{(x_n - x_m)^2}\]
             \item Система ??: \[\sum_{i+j} \frac{2}{u_i^{(m)} - u_j^{(m)}} - \sum_{i+j} \frac{1}{u_i^{(m)} - u_j^{(m+1)}} - \sum_{i+j} \frac{1}{u_i^{(m)} - u_j^{(m-1)}}\]
                 Рассмотрим матрицу
@@ -76,7 +76,7 @@
 
     Фазовое пространство --- пространство $l(z)$ --- пространство в зависимости от ??
 
-    Пусть $c_n = c_{n + N}$, $v_n = v_{n + N}$. Тогда
+    Пусть $c_{n + N} = c_n$, $v_{n + N} = v_n$, $\psi_{n+N} = z \psi_n$ для всех $n$. Тогда
     \[
         L = 
         \begin{pmatrix}
