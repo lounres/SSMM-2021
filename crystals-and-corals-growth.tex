@@ -10,5 +10,18 @@
 \begin{document}
     \maketitle
 
+    \begin{enumerate}
+        \item Diffusion Limited Aggregation (DLA): T. A. Witten, L. M. Sander, 1981.
+        \item Dielectric breakdown model (DBM): Niemeyer L., Pietronero L., Wiesmann H., 1984.
+    \end{enumerate}
+
+    Пусть даны слипшиеся $T$ частиц радиуса $\approx 1$ и на шаге $T+1$ случайно прилипает $T+1$-ая частица радиуса $1$. Тогда на момент $T$ радиус слипшейся фигуры --- $R = R(T)$. Понятно, что тогда
+    \[\sqrt{T} \leqslant R(T) \leqslant T \qquad \text{т.е.} \qquad R \leqslant T \leqslant R^2.\]
+    Оказывается, что $T \approx R(T)^\rho$, т.е. $R(T) \approx T^\beta$ ($\beta = 1/\rho \in [0.5; 1]$).
+
+    \begin{theorem}[Harry Kesten]
+        \[\beta \leqslant \frac{2}{3}.\]
+    \end{theorem}
+
     
 \end{document}
