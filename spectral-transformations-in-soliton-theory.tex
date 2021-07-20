@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{math-text}
+\usepackage{todonotes}
+% \usepackage{multicol}
+% \usepackage{float}
+
+\title{Спектральные преобразования в теории солитонов.}
+\author{Игорь Моисеевич Кричевер}
+
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator*{\osc}{osc}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\grad}{grad}
+\newcommand{\eqdef}{\mathbin{\stackrel{\mathrm{def}}{=}}}
+\newcommand{\True}{\mathrm{True}}
+\newcommand{\False}{\mathrm{False}}
+
+\begin{document}
+    \maketitle
+
+    Мы будем разговаривать о теории систем солитонов.
+
+    \begin{example}\ 
+        \begin{enumerate}
+            \item \[\frac{\partial u}{\partial t} + \frac{3}{2} u \frac{\partial u}{\partial x} - \frac{1}{4} \frac{\partial^3 u}{\partial x^3} = 0\]
+                описывает волны на воде.
+            \item Tola: \[\frac{1}{4} \ddot{x}_n = e^{2(x_n - x_{n+1})} - e^{2(x_{n-1} - x_n)}.\]
+            \item Система CM: \[\ddot{x}_n = \sum_{m=1}^N \frac{4}{(x_n - x_m)^2}\]
+            \item Система ??: \[\sum_{i+j} \frac{2}{u_i^{(m)} - u_j^{(m)}} - \sum_{i+j} \frac{1}{u_i^{(m)} - u_j^{(m+1)}} - \sum_{i+j} \frac{1}{u_i^{(m)} - u_j^{(m-1)}}\]
+                Рассмотрим матрицу
+                \[
+                    M_{i, i} = a_i + t_1 + 2 \mu_i t_2 + 3 \mu_i^2 t_3 + \dots + n \mu_i^{n-1}
+                    \qquad
+                    M_{i, j} = \frac{1}{\mu_i \cdot \mu_j}
+                \]
+                Тогда
+                \[
+                    u = -2 \partial x^2 \ln(\det(M))
+                    \qquad
+                    u = -2 \partial x^2 \ln(\Theta(Ux + Vy + Wt + z(B))).
+                \]
+        \end{enumerate}
+    \end{example}
+
+    Что общее у всех этих примеров? Интегральные системы $\Leftrightarrow$ условия совместимости переопределённой системы линейных уравнений.
+
+    \begin{example}
+        Рассмотрим преобразование $L: C(\RR)^n \to C(\RR)^n, (\psi_k(t))_{k=1}^n \mapsto (L \psi_k(t))_{k=1}^n$, что
+        \[L(\psi)_n = c_n \psi_{n+1} + v_n \psi_n + c_{n-1} \psi_{n-1}.\]
+        Попытаемся найти собственные вектора $L$. Пусть $L\psi = E \psi$. Также попросим
+        \[\partial_t \psi_n = c_{n+1} \psi_{n+1} - c_{n-1} \psi_{n+1}\]
+        Тогда
+        \begin{align*}
+            &\mathop{\phantom{=}} \dot{c}_n \psi_{n+1} + c_n (c_n \psi_{n+2} - c_n \psi_n) + \dot{v}_n \psi_n + v_n (c_n \psi_{n+1} - c_{n-1} \psi_{n-1}) + \dot{c}_{n-1} \psi_{n-1} + c_{n-1} (c_n \psi_n - c_{n-2} \psi_{n-2})\\
+            &= c_n(c_{n+1} \psi_{n+2} + v_{n+1} \psi_{n+1} + c_n \psi_n) - c_{n-1} (c_{n-1} \psi_n + v_{n-1} \psi_{n-1} + c_{n-2} \psi_{n-2})
+        \end{align*}
+        Следовательно
+        \[
+            \dot{c}_n = c_n (v_{n+1} - v_n)
+            \qquad
+            \dot{v_n} = 2 (c_n^2 - c_{n-1}^2).
+        \]
+        Если, например, $c_n = e^{x_n - x_{n-1}}$, а $v_n = \dot{x}_n$;
+        \[\ddot{x}_n = Q e^{2(x_n - x_{n+1})} - e^{2(x_n-1 - x_n)}.\]
+    \end{example}
+
+    Условие совместимости системы
+    \[
+        \begin{cases}
+            L \psi = E \psi\\
+            \partial \psi = A \psi
+        \end{cases}
+    \]
+    --- $\dot{L} = [A, L]$ (уравнение Лакса).
+
+    Фазовое пространство --- пространство $l(z)$ --- пространство в зависимости от ??
+
+    Пусть $c_n = c_{n + N}$, $v_n = v_{n + N}$. Тогда
+    \[
+        L = 
+        \begin{pmatrix}
+            v_n& c_n&& z c_0\\
+            & \ddots& \ddots\\
+            && \ddots& \ddots\\
+            z^{-1} c_0 &&& \ddots
+        \end{pmatrix}
+    \]
+\end{document}
