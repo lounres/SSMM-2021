@@ -3,6 +3,7 @@
 - **Спектральные преобразования в теории солитонов.** Игорь Моисеевич Кричевер. ([tex](spectral-transformations-in-soliton-theory.tex), [pdf](spectral-transformations-in-soliton-theory.pdf))
 - **℘-функция Вейерштрасса, ряды Эйзенштейна и модулярные функции.** Виктор Алексеевич Клепцын. ([tex](modular-functions.tex), [pdf](modular-functions.tex))
 - **Как растут кристаллы и кораллы.** Станислав Константинович Смирнов. (неполный) ([tex](crystals-and-corals-growth.tex), [pdf](crystals-and-corals-growth.pdf))
+- **Слоения, железные дороги Терстона и гиперболическая геометрия на поверхностях** Гаянэ Юрьевна Панина. ([tex](crystals-and-corals-growth.tex), [pdf](crystals-and-corals-growth.pdf))
 
 # Лицензия
 Данные конспекты распространяются под лицензией MIT. См. [LICENSE](LICENSE)
