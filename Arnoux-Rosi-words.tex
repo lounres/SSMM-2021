@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{math-text}
+% \usepackage{todonotes}
+% \usepackage{multicol}
+% \usepackage{float}
+
+\title{Слова Арну-Рози.}
+\author{Иван Алексеевич Дынников}
+
+\begin{document}
+    \maketitle
+
+    G. Hedlund, M. Morse.
+
+    \begin{definition}
+        Будем рассматривать слова над конечным алфавитом $A$, бесконечные в обе стороны. Обозначим для слова
+        \[w = \dots a_{-3} a_{-2} a_{-1} a_0 a_1 a_2 a_3 \dots\]
+        функцию
+        \[f(n) := \text{``число различных факторов (подслов) длины $n$''}.\]
+    \end{definition}
+
+    \begin{theorem}
+        Если для некоторого $n$
+        \[f(n+1) = f(n),\]
+        то $w$ периодично.
+    \end{theorem}
+
+    \begin{definition}
+        Пусть $G_n(w)$ --- граф, где вершины --- подслова длины $n$, рёбро $u \to v$ проводим тогда и только тогда, когда $ub = av$ --- подслово $w$, где $a, b \in A$.
+    \end{definition}
+
+    \begin{definition}
+        $L_n(w)$ --- все подслова $w$ длины $n$. $L(w) := \bigcup_{n} L_n(w)$ --- все конченые подслова $w$.
+    \end{definition}
+
+    \begin{definition}
+        $u \in L_n$ называется
+        \begin{enumerate}
+            \item \emph{смещённым вправо}, если из $u$ есть стрелка (т.е. расширимо справа до подслова $w$),
+            \item \emph{смещённым влево}, если в $u$ есть стрелка (т.е. расширимо слева до подслова $w$).
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}
+        $w$ называется \emph{возвратным} (\emph{recurrent}), если всякое $u \in L(w)$ встречается в $w$ бесконечное число раз (т.е. всякое ребро $G_n(w)$ посещаемо бесконечное число раз).
+    \end{definition}
+
+    \begin{remark}
+        Если $w$ возвратно, то $G_n(w)$ сильно связно.
+    \end{remark}
+
+    \begin{theorem}
+        В случае $f(n) = n+1$ имеем, что $|A| = 2$. В случае возвратного $w$ и $f(n) = n+1$ имеем, что $G_n(w)$ имеет либо две вершины степени 3, остальные 2, либо одна вершина степени 4, остальные 2. В первом случае $f(n+1) = n+2$, а во втором --- $f(n+1) = n+3$.
+    \end{theorem}
+
+    Рассмотрим слова $w$, что
+    \begin{enumerate}
+        \item $f(n) = 2n+1$,
+        \item для всякого $n$ есть ровно одно специальное справа и одно специальное слева подслово в $L_n(w)$,
+        \item $w$ возвратно.
+    \end{enumerate}
+\end{document}
