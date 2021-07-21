@@ -4,6 +4,8 @@
 % \usepackage{multicol}
 % \usepackage{float}
 
+\DeclareMathOperator{\GL}{GL}
+
 \title{Спектральные преобразования в теории солитонов.}
 \author{Игорь Моисеевич Кричевер}
 
@@ -77,4 +79,67 @@
             z^{-1} c_0 &&& \ddots
         \end{pmatrix}
     \]
+
+    Рассмотрим матрицу
+    \[
+        L(z) =
+        \begin{pmatrix}
+            l_{1,1}(z)& l_{1, 2}(z)\\
+            l_{2,1}(z)& l_{2, 2}(z)\\
+        \end{pmatrix},
+    \]
+    где
+    \[l_{i,j}(z) = \sum_{k=0}^n l_{i,j,k} z^k.\]
+    Найдём её собственные значения $w$.
+    \[\det(L(z) - w I) = w^2 - (l_{1,1}(z) + l_{2,2}(z)) w + (l_{1,1}(z) l_{2,2}(z) - l_{1,2}(z) l_{2,1}(z)) = w^2 + Q_n(z) w + R_{2n}(z) = 0.\]
+    Заметим, что можно смотреть на $L$ с точностью до $\GL(z)$, т.е. $(L_{i,j,n})$ имеет форму Жордана, но будем считать, что диагональна. Таким образом
+    \[w = \frac{-Q \pm \sqrt{Q^2 - 4R}}{2},\]
+    а соответствующий собственный вектор --- $\left(\begin{smallmatrix} l_{1,2} \\ w-l_{1,1} \end{smallmatrix}\right) \sim \left(\begin{smallmatrix}1\\\psi\end{smallmatrix}\right)$.
+
+    Дивизор полюсов $\psi$: $l_{1,2}(\gamma_s) = 0$ ($s \in \{1; \dots; n-1\}$). Для одного $z$ не более $1$ полюса.
+
+    Кривая рода $g = n-1$ и дивизор степени $g+1 = n$.
+
+    \begin{theorem}[Римана-Роха]
+        Размерность пространства мероморфных функций с полюсом в $d$ различных точках общего положения.
+    \end{theorem}
+
+    $y^2 = P_{2n}(z)$ и $y = (w + \frac{Q}{z})$. Тогда всякая $f$ имеет вид
+    \[\frac{r_1(z) y + r_2(z)}{r_3(z)}.\]
+    Видимо, потому что
+    \[r_3(z) = \prod_{s=1}^d (z - \tilde{\gamma}_s), \quad r_2(\gamma_s) = r_1(\gamma_s) \sqrt{P_{2n}(\gamma_s)}.\]
+    
+    \[L(z) = \hat{\psi}(z) \hat{w}(z) \hat{\psi}^{-1}(z),\]
+    где $\hat{w}$ диагональна.
+    \[
+        \hat{w} = \begin{pmatrix}
+            w^+(z)\\
+            & w^-(z)
+        \end{pmatrix}
+    \]
+    Таким образом
+    \[
+        L(z) = \frac{1}{\psi^- - \psi^+}
+        \begin{pmatrix}
+            1& 1\\
+            \psi^+& \psi^-
+        \end{pmatrix}
+        \begin{pmatrix}
+            w^+\\
+            &w^-
+        \end{pmatrix}
+        \begin{pmatrix}
+            \psi^-& 1\\
+            -\psi^+& 1
+        \end{pmatrix}
+    \]
+
+    \[\dot{L} = [A, L],\]
+    где
+    \[A = \begin{pmatrix}
+        a_{1,1}(z)& a_{1,2}(z)\\
+        a_{2,1}(z)& a_{2,2}(z)
+    \end{pmatrix}\]
+
+    \[\hat{L} = \sum \frac{u_i}{z - z_i} = \frac{L(z)}{\prod (z - z_i)}\]
 \end{document}
