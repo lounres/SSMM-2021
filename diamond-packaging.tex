@@ -1,8 +1,12 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage{math-text}
-\usepackage{todonotes}
+% \usepackage{todonotes}
 % \usepackage{multicol}
 % \usepackage{float}
+
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\GCD}{GCD}
+\DeclareMathOperator{\SL}{SL}
 
 \title{Математика алмазных упаковок.}
 \author{Александр Петрович Веселов}
@@ -10,4 +14,110 @@
 \begin{document}
     \maketitle
 
+    См. также:
+    \begin{itemize}
+        \item \href{https://mccme.ru/dubna/2016/courses/kleptsyn.html}{Решетки и упаковки шаров.} Виктор Алексеевич Клепцын, ЛШСМ 2016.
+    \end{itemize}
+
+    \textbf{Плотнейшие упаковки шаров:}
+    \begin{itemize}
+        \item $n=2$: гексагональная. Плотность $\Delta = \frac{\pi}{\sqrt{12}} \approx 0{,}91$.
+        \item $n=3$: ``фруктовая'' (как ядра кладут друг на друга, где в основании квадрат). Плотность $\Delta = \frac{\pi}{\sqrt{18}} \approx 0{,}74$.
+        \item $D_n := \{x \in \ZZ^n \mid \sum x_i \equiv 0 \pmod{2}\}$ --- самые плотные при $n \in [3; 7]$.
+        \item $E_8$, решётка Коркина-Золотарёва --- самая плотная в размерности 8 (Марина Вязовская, 2016).
+    \end{itemize}
+
+    \subsubsection*{Алмазные упаковки (по Джону Конвею).}
+
+    \begin{definition}
+        Упаковка $D_n^+ = A_n := D_n \cup (D_n + (1/2; 1/2))$.
+    \end{definition}
+
+    \begin{remark}\ 
+        \begin{itemize}
+            \item $A_3$ --- алмаз; плотность $\Delta = \frac{\pi \sqrt{3}}{16} \approx 0{,}34$.
+            \item Является решёткой только для чётных $n$.
+            \item $A_4 \simeq \ZZ^4$ ($(\pm 1/2; \pm 1/2; \pm 1/2; \pm 1/2)$).
+            \item $A_8 = E_8$ --- плотнейшая.
+        \end{itemize}
+    \end{remark}
+
+    \subsubsection*{Чётные унимодулярные решётки.}
+
+    \begin{definition}
+        $L \subseteq \RR^n$ называется
+        \begin{itemize}
+            \item \emph{чётной}, если все квадраты длин чётные,
+            \item \emph{унимодулярной}, если объём фундаментальной решётки равен 1.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{remark}
+        \begin{itemize}
+            \item Существует только в размерности $n = 8k$.
+            \item $n=8$: единственная решётка --- $E_8 = A_8$.
+            \item $n=16$: две $E_8 \oplus E_8$, $A_16$.
+            \item $n=24$: 24 решения Немейера, включая решётку Лича (см. также \href{http://www.ams.org/notices/201309/rnoti-p1168.pdf}{1}).
+        \end{itemize}
+    \end{remark}
+
+    \subsubsection*{Ряды Эйзенштейна и модулярные формы.}
+
+    \begin{definition}
+        $\mathcal{L} \subseteq \CC$, $\mathcal{L} = \langle 1, \tau \rangle$, $\Img(\tau) > 0$.
+        \[\varepsilon_{2k}(\tau) = \frac{1}{2}\sum_{\GCD(m, n) = 1} \frac{1}{(m + \tau n)^{2k}}.\]
+    \end{definition}
+
+    \begin{remark}
+        \begin{itemize}
+            \item Если $\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right) \in \SL_2(\ZZ)$ --- модулярная группа, то
+                \[\varepsilon_{2k}\left(\frac{a \tau + b}{c \tau + d}\right) = (c \tau + d)^{2k} \varepsilon_{2k}(\tau).\]
+            \item В частности,
+                \[\varepsilon_{2k}(\tau + 1) = \varepsilon_{2k}(\tau).\]
+            \item Ряд Фурье:
+                \[\varepsilon_{2k} = 1 - \frac{4k}{B_{2k}} \sum \sigma_{2k-1}(n) q^n,\]
+                где
+                \[\sigma_p(n) := \sum_{d \mid n} d^p, \qquad q = e^{2\pi i \tau}.\]
+            \item \textbf{Факт.} Алгебра модулярных форм $\CC[\varepsilon_4, \varepsilon_6]$ порождает $\varepsilon_4$ и $\varepsilon_6$.
+        \end{itemize}
+    \end{remark}
+
+    \subsubsection*{Тэта рядырешёток и спектр торов.}
+
+    \begin{definition}
+        \emph{Тэта ряд решётки $\mathcal{L} \subseteq \RR^n$} ---
+        \[\Theta_{\mathcal{L}}(\tau) := \sum_{l \in \mathcal{L}} q^{|l|^2}, \qquad q = e^{2\pi i \tau}.\]
+    \end{definition}
+
+    \begin{remark}
+        \begin{itemize}
+            \item $\Theta_{\ZZ} = 1 + 2q + 2q^4 + 2q^9 + \dots$.
+            \item Якоби:
+                \[
+                    \Theta_3 = \sum_{k \in \ZZ} q^{k^2},
+                    \quad
+                    \Theta_2 = \sum_{k \in \ZZ} q^{(k + 1/2)^2},
+                    \quad
+                    \Theta_4 = \sum_{k \in \ZZ} (-1)^k q^{k^2}.
+                \]
+            \item
+                \[
+                    \Theta_{\ZZ^n} = \Theta_3^n,
+                    \quad
+                    \Theta_{\ZZ^n + (1/2; 1/2)} = \Theta_2^n,
+                    \quad
+                    \Theta_{D_n} = \frac{1}{2}(\Theta_3^n + \Theta_4^n),
+                    \quad
+                    \Theta_{A_n} = \frac{1}{2} (\Theta_2^n + \Theta_3^n + \Theta_4^n).
+                \]
+            \item Якоби: $A_4 \simeq \ZZ^4$, значит
+                \[\frac{1}{2}(\Theta_2^4 + \Theta_3^4 + \Theta_4^4) = \Theta_3^4,\]
+                т.е.
+                \[\Theta_3^4 = \Theta_2^4 + \Theta_4^4.\]
+            \item \[\Theta_{A_8} = \Theta_{E_8} = \frac{1}{2}(\Theta_2^8 + \Theta_3^8 + \Theta_4^8).\]
+            \item Для частных унимодулярных решёток $\mathcal{L} \subseteq \RR^n$ $\Theta_{\mathcal{L}}$ есть модулярная форма веса $4k$. Как следствие, $\Theta_{E_8} = \varepsilon_4$.
+            \item $A$ в размерности 16. Две решётки, а форма одна.
+            \item \textbf{Следствие} (Милнор, 1964). Соответствующие торы $\RR^16/\mathcal{L}$, $E_8 \oplus E_8$, $A_16$ изоспектральны (но не изоморфны). ``Нельзя услышать форму барабана!'' (М. Кас)
+        \end{itemize}
+    \end{remark}
 \end{document}
