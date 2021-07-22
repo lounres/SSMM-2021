@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage{math-text}
-% \usepackage{todonotes}
+\usepackage{todonotes}
 % \usepackage{multicol}
 % \usepackage{float}
 
@@ -68,8 +68,30 @@
     \end{definition}
 
     \begin{definition}
-        Пусть дана непрерывная дифференцируемая функция $f: S^1 \to S^1$. Тогда для всякой точки $p \in S^1$, если $\{q_1; \dots; q_n\} = f^{-1}(p)$ и $f'(q_i) \neq 0$, то величина
+        Пусть дана непрерывная дифференцируемая функция $f: S^1 \to S^1$. Тогда для всякой точки $p \in S^1$, 
+        если $\{q_1; \dots; q_n\} = f^{-1}(p)$ и $f'(q_i) \neq 0$, то величина
         \[\sum_{i=1}^n \sign(f'(q_i))\]
         является (целой) величиной, независящей от $p$. Она называется \emph{порядком $f$}.
     \end{definition}
+
+    \begin{definition}
+        \todo[inline]{Дописать.}
+        \[\wp(z) := \frac{1}{z^2} + \sum_{\gamma \in E} \frac{1}{(z-\gamma)^2} - \frac{1}{\gamma^2}.\]
+    \end{definition}
+
+    \begin{theorem}
+        \[\wp'^2 - 4\wp^3 - A\wp^2 - g\wp - d = 0.\]
+    \end{theorem}
+
+    \begin{proof}
+        Поскольку функция выше мезоморфна и не имеет особенностей, то голоморфна, а значит константна.
+    \end{proof}
+
+    \begin{corollary}
+        Отображение
+        \[f: \CC / \Gamma \to \CC^2, z \to (\wp(z), \wp'(z))\]
+        Переводит тор в кривую $y^2 = 4x^3 + g x + d$.
+    \end{corollary}
+
+    
 \end{document}
