@@ -4,11 +4,124 @@
 % \usepackage{multicol}
 % \usepackage{float}
 
+\newcommand{\GCD}{\mathrm{GCD}}
+
 \title{Основы кругового метода в теории чисел.}
 \author{Максим Александрович Королёв}
 
 \begin{document}
     \maketitle
 
-    
+    Мы будем задаваться вопросом вида когда и сколькими способами некоторое целое число $N$ раскладывается в сумму
+    \[N = a_1 + \dots + a_k, \qquad a_i \in A.\]
+
+    \begin{example}
+        Теорема Лагранжа о разложимости числа в сумму 4 квадратов есть частный случай для $k = 4$, $A = \{a^2\}_{a \in \ZZ}$.
+    \end{example}
+
+    \begin{statement}[проблема Варинга, доказана]
+        Для всякого $n > 1$ есть константа $k = k(n)$, что всякое натуральное $N$ представимо в виде
+        \[N = x_1^n + \dots + x_k^n,\]
+        где $x_i \geqslant 0$.
+    \end{statement}
+
+    \begin{definition}
+        Для всякого целого $m$ определим
+        \[\delta(m) := \int_0^1 e^{2\pi i m \alpha} d\alpha.\]
+    \end{definition}
+
+    \begin{remark}
+        $\delta(0) = 1$. Если $m \neq 0$, то
+        \[\delta(m) = \left.\frac{e^{2\pi i \alpha m}}{2 \pi i m}\right|_0^1 = 0.\]
+        Следовательно
+        \[\delta(m) = [m = 0].\]
+    \end{remark}
+
+    Пусть $I(N)$ --- число решений уравнения
+    \[N = x_1^3 + \dots + x_10^3.\]
+    Рассмотрим случайный вектор $x = (x_1, \dots, x_10)$ и обозначим
+    \[m = x_1^3 + \dots x_10^3 - N.\]
+    Следовательно $\delta(m) = 1$ тогда и только тогда, когда $x$ --- корень. Понятно, что $x_i \leqslant \sqrt[3]{N} =: P$. Следовательно
+    \begin{align*}
+        I(N)
+        &= \sum_{0 \leqslant x_1, \dots, x_10 \leqslant P} \delta(x_1^3 + \dots x_10^3 - N)\\
+        &= \sum_{\vec{x}} \int_0^1 e^{2\pi i \alpha (x_1^3 + \dots + x_10^3 - N)} d\alpha\\
+        &= \int_0^1 \prod_{j=1}^10 \sum_{0 \leqslant x_j \leqslant P} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
+        &= \int_0^1 S_3^10(\alpha) e^{-2\pi i \alpha N} d\alpha.
+    \end{align*}
+
+    $J(N)$ --- частное решение уравнения Лагранжа.
+    \[J(N) = \int_0^1 S_2^4(\alpha) e^{-2\pi \alpha N} d\alpha.\]
+    Имеем, что $J(N) > 0$ для всякого $N \geqslant 1$. Также получаем, что
+    \[J(N) = \int_0^1 W^3(\alpha) e^{-2\pi \alpha N} d\alpha,\]
+    где
+    \[W(\alpha) = \sum_{p \leqslant N} e^{2\pi \alpha p}.\]
+
+    \begin{theorem}
+        Пусть есть $\tau > 1$. Тогда для всякого $\alpha \in [0; 1]$ существуют целые $0 \leqslant a \leqslant q$, что $\GCD(a, q) = 1$, $1 \leqslant q \leqslant \tau$, что
+        \[|\alpha - \frac{p}{q}| \leqslant \frac{1}{q \tau}.\]
+    \end{theorem}
+
+    \begin{proof}
+        Рассмотрим $\alpha_j := \{j\alpha\}$. Возьмём $n = [\tau] + 1$. Тогда
+        \[0 = \alpha_0 \leqslant \alpha_1 \leqslant \dots \leqslant \alpha_n \leqslant \alpha_{n+1} = 1\]
+        --- разбиение $[0; 1]$. Тогда существуют $k$ и $m$, что
+        \[0 \leqslant \alpha_k - \alpha_m \leqslant \frac{1}{n+1}.\]
+
+        Пусть $1 \leqslant m \leqslant k \leqslant n$. Тогда
+        \begin{gather*}
+            0 \leqslant k \alpha - [k \alpha] - m \alpha + [m \alpha] \leqslant \frac{1}{n+1}\\
+            0 \leqslant \alpha(k-m) - ([k \alpha] - [m \alpha]) \leqslant \frac{1}{n+1}\\
+            0 \leqslant \alpha - \frac{[k \alpha] - [m \alpha]}{k-m} \leqslant \frac{1}{(n+1)(k-m)}
+        \end{gather*}
+        Пусть
+        \[\frac{a}{q} := \frac{[k \alpha] - [m \alpha]}{k-m}.\]
+        Тогда
+        \[0 \leqslant \alpha - \frac{a}{q} \leqslant \frac{1}{(n+1)(k-m)} \leqslant \frac{1}{\tau q}.\]
+    \end{proof}
+
+    \begin{remark}
+        Такая дробь $\frac{a}{q}$ называется \emph{рациональным приближением (к) $\alpha$ порядка $\tau$}.
+    \end{remark}
+
+    \begin{remark}
+        Если $\frac{a}{q}$ --- рациональное приближение порядка $\tau$, то $\alpha = \frac{a}{q} + \frac{\theta}{q \tau}$, где $|\theta| \leqslant 1$.
+    \end{remark}
+
+    \begin{remark}
+        Пусть
+        \[E(a, q) := (\frac{a}{q} - \frac{1}{q \tau}; \frac{a}{q} + \frac{1}{q \tau}).\]
+        Тогда $\frac{a}{q}$ будет приближением порядка $\tau$ тогда и только тогда, когда $\alpha \in E(a, q)$.
+    \end{remark}
+
+    Теперь пусть $\tau = 6 P^2 = 6N$. Берём $Q \in (1; \frac{\tau}{2})$ (конкретное значение будет позже). Отрезок $[0; 1]$ покрыт объединением
+    \[\bigcup_{1 \leqslant q \leqslant \tau} \bigcup_{\substack{a = 0\\ (a, q) = 1}}^q E(a, q).\]
+    Пусть $E_1$ --- объединение интервалов $E(a, q)$ с $q \leqslant Q$, а
+    \[E_2 := (\frac{-1}{\tau}; 1 - \frac{1}{\tau}] \setminus E_1\]
+    --- всё остальное.
+
+    \begin{theorem}
+        $E_1$ состоит из непересекающихся интервалов.
+    \end{theorem}
+
+    \begin{proof}
+        Предположим противное. Пусть есть точки $\frac{a_1}{q_1}$ и $\frac{a_2}{q_2}$, отрезки которых перекрываются. Следовательно
+        \begin{gather*}
+            0 < \frac{a_2}{q_2} - \frac{a_1}{q_1} < \frac{1}{q_1 \tau} + \frac{1}{q_2 \tau}\\
+            0 < \frac{a_2 q_1 - a_1 q_2}{q_1 q_2} < \frac{q_1 + q_2}{q_1 q_2 \tau}\\
+            \tau < q_1 + q_1 \leqslant 2Q
+        \end{gather*}
+    \end{proof}
+
+    \[I(N) = \int_{E_1} + \int_{E_2} = I_1(N) + I_2(N)\]
+    --- \emph{интегралы по большим и малым дугам}.
+
+    Тригонометрические суммы:
+    \[S_1(\alpha) := \sum_{x=0}^P e^{2 \pi i \alpha x}.\]
+    Если $\alpha$ целое, то $S_1 = P+1$, иначе
+    \[S_1(\alpha) = \frac{e^{2 \pi i \alpha (P+1)} - 1}{e^{2 \pi i \alpha} - 1}.\]
+    Таким образом
+    \[|S_1(\alpha)| \leqslant \frac{2}{|e^{\pi i \alpha}(e^{\pi i \alpha} - e^{-\pi i \alpha})|} = \frac{1}{\sin(\pi \alpha)} = \frac{1}{\sin(\pi ||\alpha||)} \leqslant \frac{1}{2 ||\alpha||},\]
+    где
+    \[||\alpha|| := \min_{n \in \ZZ}(|\alpha - n|).\]
 \end{document}
