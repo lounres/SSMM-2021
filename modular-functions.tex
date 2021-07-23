@@ -93,5 +93,37 @@
         Переводит тор в кривую $y^2 = 4x^3 + g x + d$.
     \end{corollary}
 
-    
+    \begin{definition}
+        \emph{Ряд Эйзенштейна} ---
+        \[G_k(\Gamma) := \sum_{\Gamma \setminus \{0\}} \frac{1}{\gamma^k}.\]
+    \end{definition}
+
+    \begin{remark}
+        Заметим, что
+        \[
+            \frac{1}{\gamma - z}
+            = \frac{1}{\gamma} \frac{1}{1 - \frac{z}{\gamma}}
+            = \frac{1}{\gamma} (1 + \frac{z}{\gamma} + \frac{z^2}{\gamma^2} + \dots),
+        \]
+        следовательно
+        \[\frac{1}{(z - \gamma)^2} = \left(\frac{1}{\gamma - z}\right)' = \frac{1}{\gamma^2} + \frac{2z}{\gamma^3} + \frac{3z^2}{\gamma^4} + \dots.\]
+        Таким образом
+        \begin{align*}
+            \wp(z)
+            &= \frac{1}{z^2} + 2z \sum \frac{1}{\gamma^3} + 3z^2 \sum \frac{1}{\gamma^4} + 4z^3 \sum \frac{1}{\gamma^5} + \dots\\
+            &=: \frac{1}{z^2} + 3 G_4(\Gamma) z^2 + 5 G_6(\Gamma) z^4 + 7 G_8(\Gamma) z^6 + \dots\\
+            &= \frac{1}{z^2}(1 + 3 G_4(\Gamma) z^4 + 5 G_6(\Gamma) z^6 + 7 G_8(\Gamma) z^8 + \dots)
+        \end{align*}
+        А значит
+        \begin{align*}
+            \wp'(z)
+            &= -\frac{2}{z^3} + 6 G_4(\Gamma) z + 20 G_6(\Gamma) z^3 + 42 G_8(\Gamma) z^8 + \dots\\
+            &= -\frac{2}{z^3}(1 - 3 G_4(\Gamma) z^4 + 10 G_6(\Gamma) z^6 + 21 G_8(\Gamma) z^8 + \dots)
+        \end{align*}
+        
+        Смотря на первые члены рядов, получаем, что $g = 60 G_4(\Gamma)$ и $d = 140 G_6(\Gamma)$, т.е.
+        \[\wp'^2 - 4\wp^3 - A\wp^2 - 60 G_4(\Gamma) \wp - 140 G_6(\Gamma) = 0.\]
+    \end{remark}
+
+    \subsection*{Пространство решёток (и модулярная кривая)}
 \end{document}
