@@ -4,10 +4,79 @@
 % \usepackage{multicol}
 % \usepackage{float}
 
+\newcommand{\rad}{\mathrm{rad}}
+
 \title{ABC-гипотеза и ее следствия.}
 \author{Дмитрий Олегович Орлов}
 
 \begin{document}
     \maketitle
 
+    \begin{statement}[(бинарная) гипотеза Гольдбаха, открыта]
+        Всякое чётное число, начиная с $4$, можно представить в виде суммы 2 простых чисел.
+    \end{statement}
+
+    \begin{statement}[(тернарная) гипотеза Гольдбаха, доказана]
+        Всякое нечётное число, начиная с $7$, можно представить в виде суммы 3 простых чисел.
+    \end{statement}
+    
+    \begin{statement}[гипотеза близнецов, открыта]
+        Существует бесконечно много пар простых чисел вида $(p; p+2)$.
+    \end{statement}
+    
+    \begin{statement}[открыта]
+        Для всякого $n$ есть простое $p \in [n^2; (n+1)^2]$.
+    \end{statement}
+    
+    \begin{statement}[открыта]
+        Существует бесконечно много простых чисел вида $n^2 + 1$.
+    \end{statement}
+
+    \begin{definition}
+        Для всякого натурального числа $n = \prod_{i=1}^k p_i^{\alpha_i}$ назовём его \emph{радикалом} число
+        \[\rad(n) := \prod_{i=1}^k p_i.\]
+    \end{definition}
+    
+    \begin{statement}[$abc$-гипотеза, открыта]
+        Для всякого $\varepsilon > 0$ существует постоянная $K(\varepsilon)$, что для всякой тройки $a$, $b$, $c$ попарно взаимно натуральных чисел, что $a + b = c$, выполняется неравенство
+        \[c \leqslant K(\varepsilon) \cdot \rad(abc)^{1 + \varepsilon}.\]
+    \end{statement}
+
+    \begin{example}
+        Есть бесконечно много троек, где $c \geqslant \rad(abc)$. Действительно, если $a = 1$, $b = 3^{2^k} - 1$, $c = 3^{2^k}$, то по лемме об уточнении показателя $\nu_2(b) = k+2$, а значит
+        \[\rad(abc) \leqslant \frac{3b}{2^{k+1}} \ll c.\]
+    \end{example}
+
+    \begin{example}
+        Пусть
+        \[\rho(a, b, c) := \frac{\ln(c)}{\ln(\rad(abc))}\]
+        Самые известные ``плохие'' примеры:
+        \begin{enumerate}
+            \item $a = 2$, $b = 3^{10} \cdot 109$, $c = 23^5$,
+                \[\rho \approx 1{,}62991.\]
+            \item $a = 11^2$, $b = 3^2 \cdot 5^6 \cdot 7^3$, $c = 2^{21} \cdot 23$,
+                \[\rho \approx 1{,}62599.\]
+        \end{enumerate}
+    \end{example}
+    
+    \begin{statement}[открыта]
+        Для всякой тройки $a$, $b$, $c$ попарно взаимно натуральных чисел, что $a + b = c$, выполняется неравенство
+        \[c \leqslant \rad(abc)^2.\]
+    \end{statement}
+    
+    \begin{corollary}[почти великая теорема Ферма]
+        Уравнение
+        \[x^2 + y^2 = z^2\]
+        не имеет нетривиальных решений при $n > 6$.
+    \end{corollary}
+
+    \begin{proof}
+        Пусть $a = x^n$, $b = y^n$, $c = z^n$. Тогда
+        \[z^n = c \leqslant \rad(abc)^2 \leqslant (xyz)^2 \leqslant z^6\]
+        --- противоречие.
+    \end{proof}
+    
+    \begin{statement}[гипотеза Морделла, доказана]
+        Количество рациональных точек на алгебраической кривой рода $\geqslant 2$ конечно.
+    \end{statement}
 \end{document}
