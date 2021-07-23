@@ -9,6 +9,9 @@
 - **Дискретные интегрируемые системы и геометрия.** Антон Викторович Джамай. ([tex](discrete-integrable-systems-and-geometry.tex), [pdf](discrete-integrable-systems-and-geometry.pdf))
 - **Гомологические сферы и алгоритмическая неразрешимость в топологии.** Александр Александрович Гайфуллин. ([tex](decidability-in-topology.tex), [pdf](decidability-in-topology.pdf))
 - **ABC-гипотеза и ее следствия.** Дмитрий Олегович Орлов. ([tex](abc-conjecture.tex), [pdf](abc-conjecture.pdf))
+- **Множество Мандельброта.** Владлен Анатольевич Тиморин. ([tex](Mandelbrot-set.tex), [pdf](Mandelbrot-set.pdf))
+- **Основы кругового метода в теории чисел.** Максим Александрович Королёв. ([tex](circular-method-in-number-theory.tex), [pdf](circular-method-in-number-theory.pdf))
+- **Узлы, зацепления и их полиномы.** Алексей Брониславович Сосинский. ([tex](knots-and-polynomials.tex), [pdf](knots-and-polynomials.pdf))
 
 # Лицензия
 Данные конспекты распространяются под лицензией MIT. См. [LICENSE](LICENSE)
