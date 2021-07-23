@@ -46,8 +46,8 @@
         I(N)
         &= \sum_{0 \leqslant x_1, \dots, x_10 \leqslant P} \delta(x_1^3 + \dots x_10^3 - N)\\
         &= \sum_{\vec{x}} \int_0^1 e^{2\pi i \alpha (x_1^3 + \dots + x_10^3 - N)} d\alpha\\
-        &= \int_0^1 \prod_{j=1}^10 \sum_{0 \leqslant x_j \leqslant P} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
-        &= \int_0^1 S_3^10(\alpha) e^{-2\pi i \alpha N} d\alpha.
+        &= \int_0^1 \prod_{j=1}^{10} \sum_{0 \leqslant x_j \leqslant P} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
+        &= \int_0^1 S_3^{10}(\alpha) e^{-2\pi i \alpha N} d\alpha.
     \end{align*}
 
     $J(N)$ --- частное решение уравнения Лагранжа.
@@ -121,7 +121,7 @@
     Если $\alpha$ целое, то $S_1 = P+1$, иначе
     \[S_1(\alpha) = \frac{e^{2 \pi i \alpha (P+1)} - 1}{e^{2 \pi i \alpha} - 1}.\]
     Таким образом
-    \[|S_1(\alpha)| \leqslant \frac{2}{|e^{\pi i \alpha}(e^{\pi i \alpha} - e^{-\pi i \alpha})|} = \frac{1}{\sin(\pi \alpha)} = \frac{1}{\sin(\pi ||\alpha||)} \leqslant \frac{1}{2 ||\alpha||},\]
+    \[|S_1(\alpha)| \leqslant \frac{2}{|e^{\pi i \alpha}(e^{\pi i \alpha} - e^{-\pi i \alpha})|} = \frac{1}{\sin(\pi \alpha)} = \frac{1}{\sin(\pi \|\alpha\|)} \leqslant \frac{1}{2 \|\alpha\|},\]
     где
-    \[||\alpha|| := \min_{n \in \ZZ}(|\alpha - n|).\]
+    \[\|\alpha\| := \min_{n \in \ZZ}(|\alpha - n|).\]
 \end{document}
