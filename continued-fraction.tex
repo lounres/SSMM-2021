@@ -1,0 +1,156 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{math-text}
+\usepackage{todonotes}
+\usepackage{multicol}
+% \usepackage{float}
+
+\title{Непрерывные дроби.}
+\author{Сергей Константинович Ландо}
+
+\begin{document}
+    \maketitle
+
+    Рассмотрим цепную дробь вида
+    \begin{gather*}
+        \dfrac{1}{
+            1 - ct + \dfrac{ct^2}{
+                1 - (c-2)t + \dfrac{(4c-3)t^2}{
+                    1 - (c-6)t + \dfrac{(9c-18)t^2}{
+                        \dots
+                    }
+                }
+            }
+        }\\
+        = 1 + ct + c(c-1)t^2 + c(c-1)(c-2)t^3 + c(c^3 - 6c^2 + 13c - 7) + \dots = \sum_{k=0}^\infty L_n(c) t^n,
+    \end{gather*}
+    где каждый этаж $n$ выглядит как
+    \[
+        \dfrac{\dots}{
+            1 - (c - n(n-1))t + \dfrac{(n^2 c - n^2(n^2 - 1))t^2}{
+                \dots
+            }
+        }
+    \]
+    а $\deg(L_n) = n$.
+
+    \begin{definition}
+        \emph{Хордовая диаграмма.} Рассмотрим  окружность, в которой проведены хорды. При этом вершины хорд можно двигать как угодно с сохранением их порядка на окружности. Определим рекуррентно \emph{инвариант Чмутова-Варченко}:
+        \begin{enumerate}
+            \item Если диаграмма пуста, то сопоставим ей $1$.
+            \item Если диаграмма состоит только из единственной хорды, то сопоставим ей $c$.
+            \item Если диаграмма содержит ребро, пересекающееся ровно с одним другим, то сопоставим ей $(c-1) \cdot M$, где $M$ --- значение этой диаграммы, но без рассмотренного ребра.
+            \item Если диаграмма состоит из двух непересекающихся наборов хорд, то значением равно произведению значений диаграмм для каждого из набора хорд.
+            \item \todo[inline]{Добавить картинку.}
+        \end{enumerate}
+        \todo[inline]{Нарисовать.}
+    \end{definition}
+
+    \begin{theorem}
+        Это определение корректно.
+    \end{theorem}
+
+    \begin{statement}[гипотеза, открыта]
+        $L_n(c)$ есть инвариант Чмутова-Варченко для диаграммы из $n$ попарно пересекающихся хорд (главных диагоналей $2n$-угольника) для значения $c$.
+    \end{statement}
+
+    \begin{remark}
+        Данное утверждение проверено для $n$ до $16$. Также доказано, что коэффициент при $c$ совпадает.
+    \end{remark}
+
+    \begin{definition}
+        \[C(t) := \sum_{k=0}^\infty C_n t^n\]
+        --- производящая функция чисел Каталана.
+    \end{definition}
+
+    Несложно видеть, что
+    \begin{gather*}
+        t C^2(t) = C(t) - 1\\
+        C(t)(1 - t C(t)) = 1\\
+        C(t)
+        = \frac{1}{1 - t C(t)}
+        = \dfrac{1}{
+            1 - \dfrac{t}{
+                1 - t C(t)
+            }
+        }
+        = \dfrac{1}{
+            1 - \dfrac{t}{
+                1 - \dfrac{t}{
+                    1 - \dfrac{t}{
+                        \dots
+                    }
+                }
+            }
+        }
+    \end{gather*}
+
+    \begin{definition}
+        \emph{Хроматический многочлен графа $G$} --- многочлен $\chi_G$, где $\chi_G(c)$ --- количество правильных раскрасок графа в $c$ цветов.
+    \end{definition}
+
+    \begin{example}
+        $\chi_{K_n}(c) = A_c^n$.
+    \end{example}
+
+    \begin{exercise}
+        \begin{gather*}
+            \sum_{n=0}^\infty \chi_{K_n}(c) t^n = 1 + ct + c(c-1)t^2 + c(c-1)(c-2) t^3 + \dots\\
+            = \dfrac{1}{
+                1 - ct + \dfrac{ct^2}{
+                    1 - (c-2) t + \dfrac{2(c-1) t^2}{
+                        1 - (c-4) t + \dfrac{3(c-2) t^2}{
+                            \dots
+                        }
+                    }
+                }
+            }
+        \end{gather*}
+    \end{exercise}
+
+    \begin{theorem}[Чмутов, Ландо]
+        Инвариант Чмутова---Варченко на хордовой диаграмме зависит только от графа пересечения хорд диаграммы.
+    \end{theorem}
+
+    \begin{exercise}
+        Найти функции цепных дробей.
+        \begin{multicols}{2}
+            \begin{enumerate}
+                \item
+                    \[
+                        \dfrac{1}{
+                            1 - \dfrac{1^2 t^2}{
+                                1 - \dfrac{2^2 t^2}{
+                                    1 - \dfrac{3^2 t^2}{
+                                        \dots
+                                    }
+                                }
+                            }
+                        }
+                        = {?}
+                    \]
+                \item
+                    \[
+                        \dfrac{1}{
+                            1 - \dfrac{1 \cdot 2 t^2}{
+                                1 - \dfrac{2 \cdot 3 t^2}{
+                                    1 - \dfrac{3 \cdot 4 t^2}{
+                                        \dots
+                                    }
+                                }
+                            }
+                        }
+                        = {?}
+                    \]
+            \end{enumerate}
+        \end{multicols}
+    \end{exercise}
+
+    \begin{definition}
+        \emph{Функция Ламберта} ---
+        \[\Psi(t) := \sum_{n=1}^\infty \frac{n^{n-1}}{n!} t^n.\]
+    \end{definition}
+
+    \begin{lemma}
+        \[\Psi(t) = t e^{\Psi(t)}.\]
+    \end{lemma}
+\end{document}

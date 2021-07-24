@@ -12,6 +12,7 @@
 - **Множество Мандельброта.** Владлен Анатольевич Тиморин. ([tex](Mandelbrot-set.tex), [pdf](Mandelbrot-set.pdf))
 - **Основы кругового метода в теории чисел.** Максим Александрович Королёв. ([tex](circular-method-in-number-theory.tex), [pdf](circular-method-in-number-theory.pdf))
 - **Узлы, зацепления и их полиномы.** Алексей Брониславович Сосинский. ([tex](knots-and-polynomials.tex), [pdf](knots-and-polynomials.pdf))
+- **Непрерывные дроби.** Сергей Константинович Ландо. ([tex](continued-fraction.tex), [pdf](continued-fraction.pdf))
 
 # Лицензия
 Данные конспекты распространяются под лицензией MIT. См. [LICENSE](LICENSE)
