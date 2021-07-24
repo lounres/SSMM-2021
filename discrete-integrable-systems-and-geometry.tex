@@ -107,6 +107,66 @@
 
     Lyness map.
 
+    Найдём формулу $\eta$. Обозначим
+    \[
+        \vec{x}_0^T A =:
+        \begin{pmatrix}
+            a_0(x_0)\\
+            a_1(x_0)\\
+            a_2(x_0)
+        \end{pmatrix},
+        \qquad
+        \vec{x}_0^T B =:
+        \begin{pmatrix}
+            b_0(x_0)\\
+            b_1(x_0)\\
+            b_2(x_0)
+        \end{pmatrix}.
+    \]
+    Напомним, что
+    \[
+        \lambda_0 = -\vec{x}_0^T B \vec{y}_0 = -(b_0(x_0) + b_1(x_0) y_0 + b_2(x_0) y_0^2),
+        \qquad
+        \lambda_1 = \vec{x}_0^T A \vec{y}_0 = (a_0(x_0) + a_1(x_0) y_0 + a_2(x_0) y_0^2).
+    \]
+    Значит, если $r_y(x_0, y_0) = (x_0, y_1)$, то $y_0$ и $y_1$ суть корни
+    \[\lambda_0 \vec{x}_0^T A \vec{y} + \lambda_1 \vec{x}_0^T B \vec{y} = 0.\]
+    Переписывая выражение, получаем
+    \begin{gather*}
+        \begin{aligned}
+            - (b_0(x_0) + b_1(x_0) y_0 + b_2(x_0) y_0^2)& (a_0(x_0) + a_1(x_0) y + a_2(x_0) y^2)\\
+            &+ (a_0(x_0) + a_1(x_0) y_0 + a_2(x_0) y_0^2) (b_0(x_0) + b_1(x_0) y + b_2(x_0) y^2) = 0
+        \end{aligned}\\
+        \begin{aligned}
+            &((b_0 a_1 - a_0 b_1) y_0 + (a_2 b_0 - a_0 b_2) y_0^2)\\
+            {}+& ((a_0 b_1 - a_1 b_0) + (a_2 b_1 - a_1 b_2) y_0^2) y\\
+            {}+& ((b_2 a_0 - a_0 b_2) + (a_1 b_2 - a_2 b_1) y_0) y^2 = 0
+        \end{aligned}\\
+        (f_1 y_0^2 - f_2 y_0) + (f_2 - f_0 y_0^2) y + (f_0 y_0 - f_1) y^2 = 0.\\
+        (f \times \vec{y}_0) \vec{y} = 0.
+    \end{gather*}
+    где
+    \[
+        (f_0; f_1; f_2) = f := (\vec{x}_0^T A) \times (\vec{x}_0^T B) = \left(
+            \begin{vmatrix}
+                a_1& a_2\\
+                b_1& b_2\\
+            \end{vmatrix};
+            \begin{vmatrix}
+                a_2& a_0\\
+                b_2& b_0\\
+            \end{vmatrix};
+            \begin{vmatrix}
+                a_0& a_1\\
+                b_0& b_1\\
+            \end{vmatrix}
+        \right).
+    \]
+    Таким образом по теореме Безу
+    \[y_0 + y_1 = - \frac{f_2 - f_0 y_0^2}{f_0 y_0 - f_1}.\]
+    Следовательно,
+    \[y_1 = \frac{-f_2 + f_1 y_0}{f_0 y_0 - f_1}.\]
+
     Пусть
     \[\sigma(x, y, A, B) := (y, x, A^T, B^T).\]
     Тогда
