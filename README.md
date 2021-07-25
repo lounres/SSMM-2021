@@ -14,7 +14,7 @@
 - **Узлы, зацепления и их полиномы.** Алексей Брониславович Сосинский. ([tex](knots-and-polynomials.tex), [pdf](knots-and-polynomials.pdf))
 - **Непрерывные дроби.** Сергей Константинович Ландо. ([tex](continued-fraction.tex), [pdf](continued-fraction.pdf))
 - **Замощения пространства и сжатие информации.** Владимир Юрьевич Протасов. ([tex](space-tilings-and-information-compression.tex), [pdf](space-tilings-and-information-compression.pdf))
-- **Доказательство Гаусса основной теоремы алгебры.** Никон Михайлович Курносов, Иван Андреевич Яковлев. ([tex](Gauss-proof-of-fundamental-theorem-of-algebra.tex), [pdf](Gauss-proof-of-fundamental-theorem-of-algebra.pdf))
+<!-- - **Доказательство Гаусса основной теоремы алгебры.** Никон Михайлович Курносов, Иван Андреевич Яковлев. ([tex](Gauss-proof-of-fundamental-theorem-of-algebra.tex), [pdf](Gauss-proof-of-fundamental-theorem-of-algebra.pdf))-->
 
 # Лицензия
 Данные конспекты распространяются под лицензией MIT. См. [LICENSE](LICENSE)
