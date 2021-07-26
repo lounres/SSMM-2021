@@ -45,8 +45,8 @@
     Следовательно $\delta(m) = 1$ тогда и только тогда, когда $x$ --- корень. Понятно, что $x_i \leqslant \sqrt[3]{N} =: P$. Следовательно
     \begin{align*}
         I(N)
-        &= \sum_{0 \leqslant x_1, \dots, x_10 \leqslant P} \delta(x_1^3 + \dots x_10^3 - N)\\
-        &= \sum_{\vec{x}} \int_0^1 e^{2\pi i \alpha (x_1^3 + \dots + x_10^3 - N)} d\alpha\\
+        &= \sum_{0 \leqslant x_1, \dots, x_10 \leqslant P} \delta(x_1^3 + \dots x_{10}^3 - N)\\
+        &= \sum_{\vec{x}} \int_0^1 e^{2\pi i \alpha (x_1^3 + \dots + x_{10}^3 - N)} d\alpha\\
         &= \int_0^1 \prod_{j=1}^{10} \sum_{0 \leqslant x_j \leqslant P} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
         &= \int_0^1 S_3^{10}(\alpha) e^{-2\pi i \alpha N} d\alpha.
     \end{align*}
@@ -54,13 +54,13 @@
     $J(N)$ --- частное решение уравнения Лагранжа.
     \[J(N) = \int_0^1 S_2^4(\alpha) e^{-2\pi \alpha N} d\alpha.\]
     Имеем, что $J(N) > 0$ для всякого $N \geqslant 1$. Также получаем, что
-    \[J(N) = \int_0^1 W^3(\alpha) e^{-2\pi \alpha N} d\alpha,\]
+    \[J(N) = \int_0^1 W(\alpha)^3 e^{-2\pi \alpha N} d\alpha,\]
     где
     \[W(\alpha) = \sum_{p \leqslant N} e^{2\pi \alpha p}.\]
 
     \begin{theorem}
         Пусть есть $\tau > 1$. Тогда для всякого $\alpha \in [0; 1]$ существуют целые $0 \leqslant a \leqslant q$, что $\GCD(a, q) = 1$, $1 \leqslant q \leqslant \tau$, что
-        \[|\alpha - \frac{p}{q}| \leqslant \frac{1}{q \tau}.\]
+        \[\left|\alpha - \frac{p}{q}\right|  \leqslant \frac{1}{q \tau}.\]
     \end{theorem}
 
     \begin{proof}
@@ -132,24 +132,28 @@
     \[S_2(\alpha, \beta) = \sum_{0 \leqslant x \leqslant P} e^{2\pi i (\alpha x^2 + \beta x)}.\]
     Тогда
     \[
-        S_2^2
+        |S_2|^2
         = \overline{S}_2 \cdot S_2
         = \sum_{0 \leqslant x \leqslant P} e^{-2\pi i (\alpha x^2 + \beta x)} \sum_{0 \leqslant y \leqslant P} e^{2\pi i (\alpha y^2 + \beta y)}
         = \sum_{0 \leqslant x, y \leqslant P} e^{2\pi i (\alpha (y^2 - x^2) + \beta (y - x))}
     \]
     Фиксируя $x$ и делая замену $h := y - x \in [-x; P - x]$, получаем, что
     \[
-        S_2^2
+        |S_2|^2
         = \sum_{0 \leqslant x \leqslant P} \sum_{-x \leqslant h \leqslant P-x} e^{2\pi i (\alpha h^2 + \beta h)} \cdot e^{2\pi i \cdot 2\alpha hx}
     \]
-    Пусть $x_1 := \min(0, -h)$, $y_1 := \min(P, P-h)$. Тогда
-    \[
-        S_2^2
-        = \sum_{|h| \leqslant P} e^{2\pi i (\alpha h^2 + \beta h)} \sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 2\alpha hx}
-        \leqslant \sum_{|h| \leqslant P} \min\left(P+1, \frac{1}{2 \|2\alpha h\|}\right)
-        \leqslant P+1 + 2 \sum_{1 \leqslant h \leqslant P} \min\left(P+1, \frac{1}{2 \|2\alpha h\|}\right)
-        \leqslant P+1 + 2 \sum_{1 \leqslant h \leqslant 2P} \min\left(P+1, \frac{1}{\|\alpha h\|}\right)
-    \]
+    Пусть $x_1 := \max(0, -h)$, $y_1 := \min(P, P-h)$. Тогда
+    \begin{align*}
+        |S_2|^2
+        &= \sum_{|h| \leqslant P} e^{2\pi i (\alpha h^2 + \beta h)} \sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 2\alpha hx}\\
+        &\leqslant \sum_{|h| \leqslant P} \min\left(P+1, \frac{1}{2 \|2\alpha h\|}\right)\\
+        \intertext{(так как $|e^{2\pi i (\alpha h^2 + \beta h)}| = 1$, а внутрення сумма содержит не более $P+1$ члена с модулем 1, поэтому $\leqslant P+1$, а также по аналогии с $S_1$ не более $1/(2\|2\alpha h\|)$)}
+        &\leqslant P+1 + 2 \sum_{1 \leqslant h \leqslant P} \min\left(P+1, \frac{1}{2 \|2\alpha h\|}\right)\\
+        &\leqslant P+1 + 2 \sum_{1 \leqslant h \leqslant P} \min\left(P+1, \frac{1}{\|2\alpha h\|}\right)\\
+        \intertext{(так как больше --- не меньше)}
+        &\leqslant P+1 + 2 \sum_{1 \leqslant h \leqslant 2P} \min\left(P+1, \frac{1}{\|\alpha h\|}\right)\\
+        \intertext{(вообще произошла замена $h := 2h$, и поэтому стоило бы писать, что новое $h$ чётно, но мы не будем, так как это добавит нечётные члены, которые не уменьшат сумму)}
+    \end{align*}
 
     \begin{definition}
         Знак Виноградова --- если $|A| \leqslant c \cdot B$, то
@@ -170,43 +174,87 @@
 
     Кубическая сумма:
     \[S_3(\alpha) = \sum_{0 \leqslant x \leqslant P} e^{2\pi i \alpha x^3}.\]
-    Тогда
-    \[
+    Тогда по аналогии с $S_2$
+    \begin{align*}
         |S_3|^2
-        = \sum_{0 \leqslant x \leqslant P} \sum_{-x \leqslant h \leqslant P-x} e^{2\pi i \alpha ((x+h)^3 - x^3)}
-        = \sum_{|h| \leqslant P} e^{2\pi i \alpha h^3} \sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h(x^2 + xh)}
-        \leqslant \sum_{|h| \leqslant P} \left|\sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h(x^2 + xh)} \right|
-        \leqslant P+1 + \sum_{1 \leqslant |h| \leqslant P} \left|\sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h(x^2 + xh)} \right|
-    \]
+        &= \sum_{0 \leqslant x \leqslant P}\; \sum_{-x \leqslant h_1 \leqslant P-x} e^{2\pi i \alpha ((x+h_1)^3 - x^3)}&
+        &= \sum_{|h_1| \leqslant P} e^{2\pi i \alpha h_1^3} \sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h_1(x^2 + xh_1)}\\
+        &\leqslant \sum_{|h_1| \leqslant P} \left|\sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h_1(x^2 + xh_1)} \right|&
+        &\leqslant P+1 + 2\sum_{1 \leqslant |h_1| \leqslant P} \left|\sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h_1(x^2 + xh_1)} \right|
+    \end{align*}
     Таким образом
     \begin{align*}
         |S_3|^4
-        &\ll P^2 + \left(\sum_{|h|} \left|\sum_{x} \dots\right|\right)^2\\
-        &\ll P^2 + P \sum_{1 \leqslant |h| \leqslant P} \left|\sum_{x} e^{2\pi i 3\alpha h(x^3 + xh)}\right|\\
-        &\ll P^2 + P \sum_{1 \leqslant |h_1| \leqslant P} \left(P + \sum_{|h_2|} \min\left(P, \frac{1}{\|3 \alpha h_1 h_2\|}\right)\right)\\
+        &\ll P^2 + \left(\sum_{1 \leqslant |h_1| \leqslant P} \left|\sum_{x_1 \leqslant x \leqslant y_1} e^{2\pi i \cdot 3\alpha h_1(x^2 + xh_1)} \right|\right)^2\\
+        \intertext{(так как банально представили как $(|S_3|^2)^2$ и использовали неравенство Гёльдера для $k=2$, $M=3$: $(A + B)^2 \ll A^2 + B^2$)}
+        &\ll P^2 + P \sum_{1 \leqslant |h_1| \leqslant P} \left|\sum_{x} e^{2\pi i \cdot 3\alpha h_1(x^2 + xh_1)}\right|^2\\
+        \intertext{(так как ещё банальнее использовали неравенство Гёльдера для $k=2$, $M \sim P$, где $a_i$ --- это модули внутренних сумм)}
+        &\ll P^2 + P \sum_{1 \leqslant |h_1| \leqslant P} \left|S_2(3 \alpha h_1, 3 \alpha h_1^2)\right|^2\\
+        &\ll P^2 + P \sum_{1 \leqslant |h_1| \leqslant P} \left(P + \sum_{1 \leqslant h_2 \leqslant 2P} \min\left(P, \frac{1}{\|3 \alpha h_1 h_2\|}\right)\right)\\
         &\ll P^3 + P \sum_{1 \leqslant |h_1| \leqslant P} \sum_{1 \leqslant h_2 \leqslant 2P} \min\left(P, \frac{1}{\|3 \alpha h_1 h_2\|}\right)\\
-        &\ll P^3 + P \sum_{1 \leqslant h_1 \leqslant P} \sum_{1 \leqslant h_2 \leqslant 2P} \min\left(P, \frac{1}{\|\alpha h_1 h_2\|}\right)\\
+        &\ll P^3 + 2P \sum_{1 \leqslant h_1 \leqslant P} \sum_{1 \leqslant h_2 \leqslant 2P} \min\left(P, \frac{1}{\|3 \alpha h_1 h_2\|}\right)\\
+        &\ll P^3 + P \sum_{1 \leqslant h_1 \leqslant 3P} \sum_{1 \leqslant h_2 \leqslant 2P} \min\left(P, \frac{1}{\|\alpha h_1 h_2\|}\right)\\
         &\ll P^3 + P \sum_{1 \leqslant n \leqslant 6P^2} \tau(n) \min\left(P, \frac{1}{\|\alpha n\|}\right)\\
+        \intertext{(где $n = h_1 h_2 \in [1; 6P^2]$, а $\tau(n)$ --- количество делителей $n$, а значит и оценка сверху на количество пар $(h_1; h_2)$ с произведением $n$)}
         &\ll P^3 + P^{1+\varepsilon} \sum_{1 \leqslant n \leqslant 6P^2} \min\left(P, \frac{1}{\|\alpha n\|}\right)
-    \end{align*}
-    \todo[inline]{Разобраться с переходом к $\tau$.}
+        \intertext{(так как $\forall \varepsilon > 0\; \exists c = c(\varepsilon)\colon \forall n \in \NN \quad \tau(n) \leqslant c(\varepsilon) n^\varepsilon \ll n^\varepsilon$).}
+    \end{align*}\goodbreak
 
     \begin{theorem}
-        Пусть $m \in \ZZ$, $x \geqslant 1$, $\alpha = \frac{a}{q} + \frac{\theta}{q^2}$, $|\theta| \leqslant 1$, $(a, q) = 1$, $q \geqslant 6$,
-        \[W = \sum_{m - \frac{q}{2} < n \leqslant m + \frac{q}{2}} \min\left(x, \frac{1}{\|\alpha n\|}\right).\]
-        Тогда $W \leqslant 4X + 2q \ln(q)$.
+        Пусть $m \in \ZZ$, $T \geqslant 1$, $\alpha = \frac{a}{q} + \frac{\theta}{q^2}$, $|\theta| \leqslant 1$, $\GCD(a, q) = 1$, $q \geqslant 6$,
+        \[W = \sum_{m - \frac{q}{2} < n \leqslant m + \frac{q}{2}} \min\left(T, \frac{1}{\|\alpha n\|}\right).\]
+        Тогда $W \leqslant 4T + 2q \ln(q)$.
     \end{theorem}
 
     \begin{proof}
-        Пусть $n = m + x$, $\frac{q}{2} < x \leqslant \frac{q}{2}$. Тогда
-        \[\alpha n = \frac{ax+b+\theta}{q} + \frac{\theta x}{q^2}, \]
-        \todo[inline]{Дописать.}
+        Пусть $n = m + x$, $-\frac{q}{2} < x \leqslant \frac{q}{2}$. Тогда
+        \begin{multline*}
+            \alpha n
+            = \alpha (m + x)
+            = \alpha x + \alpha m
+            = \left(\frac{a}{q} + \frac{\theta}{q^2}\right)x + \alpha m\\
+            = \frac{ax}{q} + \alpha m + \frac{\theta x}{q^2}
+            = \frac{ax + \alpha qm}{q} + \frac{\theta x}{q^2}
+            = \frac{ax+b+\theta_1}{q} + \frac{\theta x}{q^2}
+            = \frac{ax+b}{q} + r_x,
+        \end{multline*}
+        где $b$~--- ближайшее целое к $\alpha qm$, тогда $\alpha qm = b + \theta_1$, где $|\theta_1| \leqslant \frac{1}{2}$. При этом
+        \[r_x = \frac{\theta_1}{q} + \frac{\theta x}{q^2}.\]
+        Вспоминая, что $|\theta_1| \leqslant \frac{1}{2}$, $|\theta| \leqslant 1$, $|x| \leqslant \frac{q}{2}$, имеем, что
+        \[
+            |r_x|
+            \leqslant \left|\frac{\theta_1}{q}\right| + \left|\frac{\theta x}{q^2}\right|
+            \leqslant \frac{1}{2q} + \frac{q/2}{q^2}
+            = \frac{1}{q}.
+        \]
+        
+        Определим $y$ как остаток $ax + b$ взятый с полуинтервала $(-\frac{q}{2}; \frac{q}{2}]$. Заметим, что так как $x$ пробегает все остатки по модулю $q$ единожды, а $\GCD(a, q) = 1$, то так же пробегает все остатки и $ax + b \equiv y$, быть может, в другом порядке. Также мы имеем
+        \[\|\alpha n\| = \left\|\frac{y}{q} + \rho_y\right\|, \qquad \text{ где } \rho_y := r_x.\]
+        Поскольку $|\rho_y| = |r_x| \leqslant 1/q$, то есть ровно не более одного остатка $y$ по модулю $q$, что
+        \[\left|\frac{y}{q} + \rho_y\right| \geqslant \frac{1}{2}.\]
+        Таким образом оценим в сумме значение для этого остатка, а также для остальных остатков, как $T$ сверху. Для остальных $y$ будет верно, что
+        \[\left|\frac{y}{q} + \rho_y\right| \leqslant \frac{1}{2},\]
+        т.е. $0$ --- ближайшее значение к $\frac{y}{q} + \rho_y$, а значит
+        \[\|\alpha n\| = \left\|\frac{y}{q} + \rho_y\right\| = \left|\frac{y}{q} + \rho_y\right| \geqslant \left|\frac{y}{q}\right| - |\rho_y| \geqslant \frac{|y|}{q} - \frac{1}{q} = \frac{|y| - 1}{q}.\]
+        Поскольку $|y| - 1$ принимает неприятные значения при $y \in \{0; 1; -1\}$, то оценим и соответствующие им члены суммы тоже как $T$ сверху; остальные члены оценим сверху как
+        \[\leqslant \frac{1}{\|\alpha n\|}\frac{q}{|y| - 1}.\]
+        Таким образом получаем, что
+        \begin{align*}
+            W
+            &\leqslant 4T + \sum_{\substack{y \in (-\frac{q}{2}; \frac{q}{2}]\\ y \neq 0, 1, -1, \pm \lfloor \frac{q}{2} \rfloor}} \frac{q}{|y| - 1}\\
+            &\leqslant 4T + 2q\sum_{y=2}^{\lfloor \frac{q}{2} \rfloor} \frac{1}{y - 1}\\
+            &= 4T + 2q\sum_{y=1}^{\lfloor \frac{q}{2} \rfloor - 1} \frac{1}{y}\\
+            &\leqslant 4T + 2q\left(1 + \ln\left(\left\lfloor \frac{q}{2} \right\rfloor - 1\right)\right)\\
+            &\leqslant 4T + 2q\ln(q) + 2q(1-\ln(2))\\
+        \end{align*}
+        [получилось хуже, мы не понимаем почему, но нам и такого хватит].
     \end{proof}
 
     Так мы получаем
     \begin{align*}
         |S_3|^4
-        &\ll P^3 + P^{1+\varepsilon} \left(\frac{6P^2}{q} + 1\right) (4P + 2q \ln(q))\\
+        &\ll P^3 + P^{1+\varepsilon} \left(\frac{6P^2}{q} + 1\right) (4P + 2q \ln(q) + 2q(1-\ln(2))\\
+        \intertext{(так как мы разбили отрезок $[1; 6P^2]$ на отрезки длины $q$ и применили теорему к каждому из них)}
         &\ll P^3 + P^{1+\varepsilon} \left(\frac{P^3}{q} + P^2  \ln(q) + q \ln(q)\right)\\
         &\ll P^{1+\varepsilon} \left(\frac{P^3}{4} + P^2 \ln(q) + q\ln(q)\right)\\
         &= P^{4+\varepsilon} \left(\frac{1}{4} + \frac{\ln(q)}{P} + \frac{q \ln(q)}{P^2}\right).
