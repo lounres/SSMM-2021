@@ -14,7 +14,8 @@
     \maketitle
 
     Мы будем задаваться вопросом вида когда и сколькими способами некоторое целое число $N$ раскладывается в сумму
-    \[N = a_1 + \dots + a_k, \qquad a_i \in A.\]
+    \[N = a_1 + \dots + a_k, \qquad a_i \in A,\]
+    где мы фиксируем интересующее нас множество $A$.
 
     \begin{example}
         Теорема Лагранжа о разложимости числа в сумму 4 квадратов есть частный случай для $k = 4$, $A = \{a^2\}_{a \in \ZZ}$.
@@ -26,6 +27,8 @@
         где $x_i \geqslant 0$.
     \end{statement}
 
+    Чтобы понять, как работает круговой метод, попробуем для примера доказать, что всякое целое число представимо в виде суммы 10 кубов.
+
     \begin{definition}
         Для всякого целого $m$ определим
         \[\delta(m) := \int_0^1 e^{2\pi i m \alpha} d\alpha.\]
@@ -35,36 +38,40 @@
         $\delta(0) = 1$. Если $m \neq 0$, то
         \[\delta(m) = \left.\frac{e^{2\pi i \alpha m}}{2 \pi i m}\right|_0^1 = 0.\]
         Следовательно
-        \[\delta(m) = [m = 0].\]
+        \[\delta(m) = [m = 0],\]
+        где $[*]$ --- скобка Айверсона.
     \end{remark}
 
     Пусть $I(N)$ --- число решений уравнения
-    \[N = x_1^3 + \dots + x_10^3.\]
-    Рассмотрим случайный вектор $x = (x_1, \dots, x_10)$ и обозначим
-    \[m = x_1^3 + \dots x_10^3 - N.\]
+    \[N = x_1^3 + \dots + x_{10}^3.\]
+    Рассмотрим случайный вектор $x = (x_1, \dots, x_{10})$ и обозначим
+    \[m = x_1^3 + \dots x_{10}^3 - N.\]
     Следовательно $\delta(m) = 1$ тогда и только тогда, когда $x$ --- корень. Понятно, что $x_i \leqslant \sqrt[3]{N} =: P$. Следовательно
     \begin{align*}
         I(N)
-        &= \sum_{0 \leqslant x_1, \dots, x_10 \leqslant P} \delta(x_1^3 + \dots x_{10}^3 - N)\\
+        &= \sum_{0 \leqslant x_1, \dots, x_{10} \leqslant P} \delta(x_1^3 + \dots x_{10}^3 - N)\\
         &= \sum_{\vec{x}} \int_0^1 e^{2\pi i \alpha (x_1^3 + \dots + x_{10}^3 - N)} d\alpha\\
-        &= \int_0^1 \prod_{j=1}^{10} \sum_{0 \leqslant x_j \leqslant P} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
-        &= \int_0^1 S_3^{10}(\alpha) e^{-2\pi i \alpha N} d\alpha.
+        &= \int_0^1 \sum_{0 \leqslant x_1, \dots, x_{10} \leqslant P} \prod_{j=1}^{10} e^{2\pi i \alpha x_j^3} \cdot e^{-2\pi i \alpha N} d\alpha\\
+        &= \int_0^1 \prod_{j=1}^{10} \left(\sum_{0 \leqslant x \leqslant P} e^{2\pi i \alpha x^3}\right) \cdot e^{-2\pi i \alpha N} d\alpha\\
+        &= \int_0^1 S_3(\alpha)^{10} e^{-2\pi i \alpha N} d\alpha,
     \end{align*}
+    где
+    \[S_n(\alpha) := \sum_{x=0}^P e^{2\pi i \alpha x^n}.\]
 
-    $J(N)$ --- частное решение уравнения Лагранжа.
-    \[J(N) = \int_0^1 S_2^4(\alpha) e^{-2\pi \alpha N} d\alpha.\]
-    Имеем, что $J(N) > 0$ для всякого $N \geqslant 1$. Также получаем, что
+    Теорема же Лагранжа на таком языке будет записана как
+    \[J(N) := \int_0^1 S_2^4(\alpha) e^{-2\pi \alpha N} d\alpha > 0.\]
+    А тернарная теорема Гольдбаха на таком языке имеет вид
     \[J(N) = \int_0^1 W(\alpha)^3 e^{-2\pi \alpha N} d\alpha,\]
     где
-    \[W(\alpha) = \sum_{p \leqslant N} e^{2\pi \alpha p}.\]
+    \[W(\alpha) = \sum_{\substack{p \leqslant N\\ p \in \PP}} e^{2\pi \alpha p}.\]
 
     \begin{theorem}
         Пусть есть $\tau > 1$. Тогда для всякого $\alpha \in [0; 1]$ существуют целые $0 \leqslant a \leqslant q$, что $\GCD(a, q) = 1$, $1 \leqslant q \leqslant \tau$, что
-        \[\left|\alpha - \frac{p}{q}\right|  \leqslant \frac{1}{q \tau}.\]
+        \[\left|\alpha - \frac{a}{q}\right|  \leqslant \frac{1}{q \tau}.\]
     \end{theorem}
 
     \begin{proof}
-        Рассмотрим $\alpha_j := \{j\alpha\}$. Возьмём $n = [\tau] + 1$. Тогда
+        Рассмотрим $\alpha_j := \{j\alpha\}$. Возьмём $n = [\tau] + 1$. Тогда\todo{Это неверно: $\alpha_i$ должны идти в довольно случайном порядке.}
         \[0 = \alpha_0 \leqslant \alpha_1 \leqslant \dots \leqslant \alpha_n \leqslant \alpha_{n+1} = 1\]
         --- разбиение $[0; 1]$. Тогда существуют $k$ и $m$, что
         \[0 \leqslant \alpha_k - \alpha_m \leqslant \frac{1}{n+1}.\]
@@ -75,14 +82,17 @@
             0 \leqslant \alpha(k-m) - ([k \alpha] - [m \alpha]) \leqslant \frac{1}{n+1}\\
             0 \leqslant \alpha - \frac{[k \alpha] - [m \alpha]}{k-m} \leqslant \frac{1}{(n+1)(k-m)}
         \end{gather*}
-        Пусть
+        Определим $a$ и $q$ так, что
         \[\frac{a}{q} := \frac{[k \alpha] - [m \alpha]}{k-m}.\]
-        Тогда
+        Тогда $q \mid k-m$, и, следовательно, $q \leqslant k-m$.
         \[0 \leqslant \alpha - \frac{a}{q} \leqslant \frac{1}{(n+1)(k-m)} \leqslant \frac{1}{\tau q}.\]
+
+        Аналогично разбираются остальные случаи.
     \end{proof}
 
     \begin{remark}
-        Такая дробь $\frac{a}{q}$ называется \emph{рациональным приближением (к) $\alpha$ порядка $\tau$}.
+        Такая дробь $\frac{a}{q}$ называется \emph{рациональным приближением
+         $\alpha$ порядка $\tau$}.
     \end{remark}
 
     \begin{remark}
@@ -91,15 +101,15 @@
 
     \begin{remark}
         Пусть
-        \[E(a, q) := (\frac{a}{q} - \frac{1}{q \tau}; \frac{a}{q} + \frac{1}{q \tau}).\]
+        \[E(a, q) := \left(\frac{a}{q} - \frac{1}{q \tau}; \frac{a}{q} + \frac{1}{q \tau}\right).\]
         Тогда $\frac{a}{q}$ будет приближением порядка $\tau$ тогда и только тогда, когда $\alpha \in E(a, q)$.
     \end{remark}
 
     Теперь пусть $\tau = 6 P^2 = 6N$. Берём $Q \in (1; \frac{\tau}{2})$ (конкретное значение будет позже). Отрезок $[0; 1]$ покрыт объединением
     \[\bigcup_{1 \leqslant q \leqslant \tau} \bigcup_{\substack{a = 0\\ (a, q) = 1}}^q E(a, q).\]
     Пусть $E_1$ --- объединение интервалов $E(a, q)$ с $q \leqslant Q$, а
-    \[E_2 := (\frac{-1}{\tau}; 1 - \frac{1}{\tau}] \setminus E_1\]
-    --- всё остальное.
+    \[E_2 := \left(\frac{-1}{\tau}; 1 - \frac{1}{\tau}\right] \setminus E_1\]
+    \todo{Странный интервал у $E_2$.}--- всё остальное.
 
     \begin{theorem}
         $E_1$ состоит из непересекающихся интервалов.
@@ -110,6 +120,8 @@
         \begin{gather*}
             0 < \frac{a_2}{q_2} - \frac{a_1}{q_1} < \frac{1}{q_1 \tau} + \frac{1}{q_2 \tau}\\
             0 < \frac{a_2 q_1 - a_1 q_2}{q_1 q_2} < \frac{q_1 + q_2}{q_1 q_2 \tau}\\
+            \frac{1}{q_1 q_2} < \frac{q_1 + q_2}{q_1 q_2 \tau}\\
+            \intertext{(так как $a_2 q_1 - a_1 q_2$ --- целое, неотрицательное и неравное $0$, так как $\GCD(a_1, q_1) = \GCD(a_2, q_2) = 1$)}
             \tau < q_1 + q_1 \leqslant 2Q
         \end{gather*}
     \end{proof}
