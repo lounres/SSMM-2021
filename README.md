@@ -15,6 +15,7 @@
 - **Непрерывные дроби.** Сергей Константинович Ландо. ([tex](continued-fraction.tex), [pdf](continued-fraction.pdf))
 - **Замощения пространства и сжатие информации.** Владимир Юрьевич Протасов. ([tex](space-tilings-and-information-compression.tex), [pdf](space-tilings-and-information-compression.pdf))
 <!-- - **Доказательство Гаусса основной теоремы алгебры.** Никон Михайлович Курносов, Иван Андреевич Яковлев. ([tex](Gauss-proof-of-fundamental-theorem-of-algebra.tex), [pdf](Gauss-proof-of-fundamental-theorem-of-algebra.pdf))-->
+- **Модели и интерпретации.** Лев Дмитриевич Беклемишев. ([tex](models-and-interpretations.tex), [pdf](models-and-interpretations.pdf))
 
 # Лицензия
 Данные конспекты распространяются под лицензией MIT. См. [LICENSE](LICENSE)
