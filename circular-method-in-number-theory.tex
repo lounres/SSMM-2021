@@ -71,10 +71,10 @@
     \end{theorem}
 
     \begin{proof}
-        Рассмотрим $\alpha_j := \{j\alpha\}$. Возьмём $n = [\tau] + 1$. Тогда\todo{Это неверно: $\alpha_i$ должны идти в довольно случайном порядке.}
-        \[0 = \alpha_0 \leqslant \alpha_1 \leqslant \dots \leqslant \alpha_n \leqslant \alpha_{n+1} = 1\]
-        --- разбиение $[0; 1]$. Тогда существуют $k$ и $m$, что
-        \[0 \leqslant \alpha_k - \alpha_m \leqslant \frac{1}{n+1}.\]
+        Возьмём $n = [\tau] + 1$. Рассмотрим $\alpha_j := \{j\alpha\}$ для $j \in [1; n]$, $\alpha_0 := 0$, а $\alpha_{n+1} := 1$. Тогда
+        \[0 = \alpha_{i_0} \leqslant \alpha_{i_1} \leqslant \dots \leqslant \alpha_{i_n} \leqslant \alpha_{i_{n+1}} = 1\]
+        --- разбиение $[0; 1]$, где $(i_k)_{k=0}^{n}$ --- некоторая перестановка $(0; 1; \dots; n+1)$. Понятно, что $i_0 = 0$, $i_{n+1} = n+1$. Тогда по принципу Дирихле существуют $k$ и $m$, что
+        \[0 \leqslant \alpha_{k} - \alpha_{m} \leqslant \frac{1}{n+1}.\]
 
         Пусть $1 \leqslant m \leqslant k \leqslant n$. Тогда
         \begin{gather*}
@@ -87,12 +87,33 @@
         Тогда $q \mid k-m$, и, следовательно, $q \leqslant k-m$.
         \[0 \leqslant \alpha - \frac{a}{q} \leqslant \frac{1}{(n+1)(k-m)} \leqslant \frac{1}{\tau q}.\]
 
-        Аналогично разбираются остальные случаи.
+        Случай $1 \leqslant k \leqslant m \leqslant n$ рассматривается в точности также, только вместо $k-m$ надо рассматривать $m-k$.
+
+        Случай $k = 0$ может выполниться, только если $\alpha_m = 0$ (а в таком случае $\alpha m \in \ZZ$, следовательно достаточно взять $a := \alpha m$, $q := m$). Аналогично (но уже строго) не может выполниться случай $m = n+1$.
+
+        Пусть $m = 0$. Тогда $k \in [1; n]$, а значит
+        \begin{gather*}
+            0 \leqslant k \alpha - [k \alpha] \leqslant \frac{1}{n+1}\\
+            0 \leqslant \alpha - \frac{[k \alpha]}{k} \leqslant \frac{1}{k(n+1)}
+        \end{gather*}
+        Определим $a$ и $q$ так, что
+        \[\frac{a}{q} := \frac{[k \alpha]}{k}.\]
+        Тогда $q \mid k$, и, следовательно, $q \leqslant k$.
+        \[0 \leqslant \alpha - \frac{a}{q} \leqslant \frac{1}{k(n+1)} \leqslant \frac{1}{q \tau}.\]
+
+        Пусть $k = n+1$. Тогда $m \in [1; n]$, а значит
+        \begin{gather*}
+            0 \leqslant 1 - m \alpha + [m \alpha] \leqslant \frac{1}{n+1}\\
+            0 \leqslant \frac{1 - [m \alpha]}{m} - \alpha \leqslant \frac{1}{(n+1)m}\\
+        \end{gather*}
+        Определим $a$ и $q$ так, что
+        \[\frac{a}{q} := \frac{1 - [m \alpha]}{m}.\]
+        Тогда $q \mid m$, и, следовательно, $q \leqslant m$.
+        \[-\frac{1}{q \tau} \leqslant -\frac{1}{(n+1) m} \leqslant \alpha - \frac{a}{q} \leqslant 0.\]
     \end{proof}
 
     \begin{remark}
-        Такая дробь $\frac{a}{q}$ называется \emph{рациональным приближением
-         $\alpha$ порядка $\tau$}.
+        Такая дробь $\frac{a}{q}$ называется \emph{рациональным приближением $\alpha$ порядка $\tau$}.
     \end{remark}
 
     \begin{remark}
@@ -109,7 +130,11 @@
     \[\bigcup_{1 \leqslant q \leqslant \tau} \bigcup_{\substack{a = 0\\ (a, q) = 1}}^q E(a, q).\]
     Пусть $E_1$ --- объединение интервалов $E(a, q)$ с $q \leqslant Q$, а
     \[E_2 := \left(\frac{-1}{\tau}; 1 - \frac{1}{\tau}\right] \setminus E_1\]
-    \todo{Странный интервал у $E_2$.}--- всё остальное.
+    --- всё остальное. Полуинтервал $(-1/\tau; 1-1/\tau]$ был выбран, так как всякий интервал в нём лежит. Действительно, так как $q \leqslant Q \leqslant \tau/2$,
+    \begin{gather*}
+        \frac{a}{q} - \frac{1}{q\tau} \geqslant \frac{0}{1} - \frac{1}{1 \cdot \tau} = -\frac{1}{\tau}\\
+        \frac{a}{q} + \frac{1}{q\tau} \leqslant \frac{q-1}{q} + \frac{1}{q\tau} = 1 - \frac{\tau - 1}{q\tau} \leqslant 1 - \frac{1}{\tau} + \frac{\tau}{\tau^2} - \frac{2\tau - 2}{\tau^2} = 1 - \frac{1}{\tau} - \frac{\tau - 2}{\tau^2} < 1 - \frac{1}{\tau}.
+    \end{gather*}
 
     \begin{theorem}
         $E_1$ состоит из непересекающихся интервалов.
@@ -137,7 +162,7 @@
     \[|S_1(\alpha)| \leqslant \frac{2}{|e^{\pi i \alpha}(e^{\pi i \alpha} - e^{-\pi i \alpha})|} = \frac{1}{\sin(\pi \alpha)} = \frac{1}{\sin(\pi \|\alpha\|)} \leqslant \frac{1}{2 \|\alpha\|},\]
     где
     \[\|\alpha\| := \min_{n \in \ZZ}(|\alpha - n|)\]
-    --- расстояние от $\alpha$ до ближайшего целого. Таким образом
+    --- расстояние от $\alpha$ до ближайшего целого, так как для $t \in [0; 1/2]$ верно $\sin(\pi t) \geqslant 2t$. Таким образом
     \[|S_1(\alpha)| \leqslant \min\left(P+1, \frac{1}{2\|\alpha\|}\right)\]
 
     Теперь давайте оценим $I_2(N)$. Квадратичная сумма:
